@@ -9,3 +9,7 @@ The website uses the Astra theme and we implemented its child theme Astra-child 
 * Remove `order comment field` from the checkout page
 * Remove `shipping information` from cart
 * Change `Out Of Stock` label to **"Not Available at this Location"** in the product page
+* Disable cart quantity updates
+* Auto complete all wooCommerce orders
+
+
