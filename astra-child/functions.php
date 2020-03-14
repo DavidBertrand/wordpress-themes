@@ -127,32 +127,12 @@ function your_prefix_change_out_stock_string() {
 }
 add_filter( 'astra_woo_shop_out_of_stock_string', 'your_prefix_change_out_stock_string' );
 
+/**
+ * Disable cart quantity updates.
+ * @return String
+ */
+function wc_remove_all_quantity_fields( $return, $product ) {
+    return true;
+}
+add_filter( 'woocommerce_is_sold_individually', 'wc_remove_all_quantity_fields', 10, 2 );
 
-    
-/*
-* Fixes Cart addon not been added when using Plugin 
-* VarkTech Pricing Deals for WooCommerce
-* The fix modifies plugin Booster for woocommerce
-* under woocommerce-jetpack plugin folder
-
-
-	function add_addons_price_to_cart_item( $cart_item_data, $cart_item_key ) {
-		$addons = $this->get_product_addons( ( WCJ_IS_WC_VERSION_BELOW_3 ? $cart_item_data['data']->product_id : wcj_get_product_id_or_variation_parent_id( $cart_item_data['data'] ) ) );
-		foreach ( $addons as $addon ) {
-			if ( isset( $cart_item_data[ $addon['price_key'] ] ) ) {
-				$cart_item_data['data']->{$addon['price_key']} = $cart_item_data[ $addon['price_key'] ];
-			}
-		}
-		return $cart_item_data;
-	}
-
-	function get_cart_item_addons_price_from_session( $item, $values, $addon ) {
-		$addons = $this->get_product_addons( $item['product_id'] );
-		foreach ( $addons as $addon ) {
-			if ( array_key_exists( $addon['price_key'], $values ) ) {
-				$item['data']->{$addon['price_key']} = $values[ $addon['price_key'] ];
-			}
-		}
-		return $item;
-	}
-	*/
